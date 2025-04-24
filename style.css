@@ -1,0 +1,359 @@
+* {
+    padding: 0px;
+    margin: 0px;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    /* background-color: blueviolet; */
+    align-items: center;
+    padding: 30px 70px;
+}
+
+.logo {
+    font-family: "Epilogue", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 900;
+    font-style: normal;
+}
+
+.nav-options a {
+    /* background-color: brown; */
+    margin-left: 70px;
+    text-decoration: none;
+    color: black;
+    /* padding: 25px; */
+    font-family: "Epilogue", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 300;
+    font-style: normal;
+}
+
+.block1 {
+    display: flex;
+    height: 50vh;
+    width: auto;
+    background-color: #F9E6F0;
+    justify-content: center;
+    /* background-color: blueviolet; */
+    align-items: center;
+    /* padding-left: 20vw;
+    padding-right: 20vw; */
+    margin: auto 20vh;
+
+}
+
+.profilePhoto h3 {
+    font-family: "Epilogue", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+    padding-top: 6px;
+    padding-bottom: 4px;
+}
+
+.profilePhoto h4 {
+    font-family: "Epilogue", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 300;
+    font-style: normal;
+    padding: 3px 0px;
+}
+
+.proBio {
+    width: 40vw;
+    padding-left: 5vw;
+
+}
+
+.proBio h3 {
+    font-family: "Epilogue", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+    padding: 5px 0px;
+}
+
+.proBio h4 {
+    font-family: "Epilogue", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 300;
+    font-style: normal;
+    line-height: 1.5;
+}
+
+.profilePhoto img {
+    width: 13vw;
+    border: 1px solid black;
+
+}
+
+/* 
+.block2 {
+    display: flex;
+    align-items: center;
+    text-align: left;
+    justify-content: center;
+    margin-bottom: 10vh;
+    margin-top: 10vh;
+}
+
+.content2 {
+    width: 60vw;
+    
+
+}
+
+.content2 h3 {
+    font-family: "Epilogue", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    line-height: 1.5;
+    margin-bottom: 5vh;
+}
+
+.content2 h4 {
+
+    font-family: "Epilogue", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 300;
+    font-style: normal;
+    line-height: 2;
+
+}
+.headGreen{
+    background-color: #009379;
+    color: white;
+} 
+*/
+
+.lineBreak {
+    height: 1px;
+    width: 80%;
+    background-color: gray;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin: 20px auto;
+}
+
+/* Block1 End */
+
+.block2 {
+    margin: auto 20vh;
+    line-height: 1.5;
+}
+
+.block2 h3 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-family: "Epilogue", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+
+}
+
+.edu-Details {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin-bottom: 20px;
+}
+
+.cblock2-1 {
+    text-align: left;
+}
+
+.cblock2-2 {
+    text-align: right;
+
+}
+
+.cblock2-1 h4 {
+    font-family: "Epilogue", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 300;
+    font-style: normal;
+
+}
+
+.cblock2-2 h4 {
+    font-family: "Epilogue", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 300;
+    font-style: normal;
+}
+
+/* Block2 END */
+
+.block3 {
+    margin: auto 20vh;
+    line-height: 1.7;
+}
+
+.block3 h3 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-family: "Epilogue", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+
+}
+
+.skill-Details {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    margin-bottom: 20px;
+}
+
+.cblock3-1 {
+    text-align: left;
+    padding-right: 5vw;
+}
+
+.cblock3-2 {
+    /* text-align: right; */
+    text-align: left;
+}
+
+.cblock3-1 ul {
+    font-family: "Epilogue", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+
+}
+
+.cblock3-2 ul {
+    font-family: "Epilogue", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 300;
+    font-style: normal;
+    list-style: none;
+}
+
+/* Block3 End */
+
+.block4 {
+    margin: auto 20vh;
+    line-height: 1.5;
+}
+
+.proj {
+    text-align: center;
+    margin-bottom: 20px;
+    font-family: "Epilogue", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+
+}
+
+.block4-heading {
+    font-family: "Epilogue", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+}
+
+.block4-dis {
+    font-family: "Epilogue", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 300;
+    font-style: normal;
+    margin-left: 5vw;
+}
+
+.LINK:hover {
+    filter: brightness(80%);
+}
+
+/* block4 END */
+
+
+.block5 {
+    margin: auto 20vh;
+    line-height: 1.5;
+}
+
+.certificates {
+    text-align: center;
+    margin-bottom: 20px;
+    font-family: "Epilogue", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+
+}
+
+/* Block5 END */
+
+.block6 {
+    display: flex;
+    height: 50vh;
+    width: auto;
+    background-color: #F9E6F0;
+    justify-content: center;
+    /* background-color: blueviolet; */
+    align-items: center;
+    /* padding-left: 20vw;
+    padding-right: 20vw; */
+    margin: auto 20vh;
+    line-height: 1.5;
+}
+
+.sociallinks img {
+    width: 100px;
+    padding: 20px;
+    margin: 10px;
+    border-radius: 100px;
+    list-style: none;
+
+}
+
+.ContactMe {
+    justify-content: center;
+    text-align: center;
+    font-family: "Epilogue", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+}
+
+.hover-img:hover {
+    transform: scale(1.1);
+    transition: transform 0.3s ease;
+}
+
+
+
+/* Work in Progress Layer  */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    /* black with 60% opacity */
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.overlay h1 {
+    color: white;
+    font-size: 3rem;
+    font-weight: bold;
+    text-align: center;
+    transform: rotate(-10deg);
+}
+/* Work in Progress Layer  */
