@@ -1,3 +1,34 @@
+// Theme Toggle Functionality
+const themeToggle = document.getElementById('theme-toggle');
+const html = document.documentElement;
+
+// Check for saved theme preference or default to light mode
+const currentTheme = localStorage.getItem('theme') || 'light';
+html.setAttribute('data-theme', currentTheme);
+
+// Update toggle button icon based on current theme
+function updateToggleIcon() {
+    const icon = themeToggle.querySelector('i');
+    if (html.getAttribute('data-theme') === 'dark') {
+        icon.className = 'fas fa-sun';
+    } else {
+        icon.className = 'fas fa-moon';
+    }
+}
+
+// Initialize toggle icon
+updateToggleIcon();
+
+// Theme toggle event listener
+themeToggle.addEventListener('click', () => {
+    const currentTheme = html.getAttribute('data-theme');
+    const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+    
+    html.setAttribute('data-theme', newTheme);
+    localStorage.setItem('theme', newTheme);
+    updateToggleIcon();
+});
+
 // Mobile Navigation Toggle
 const hamburger = document.getElementById('hamburger');
 const navMenu = document.getElementById('nav-menu');
