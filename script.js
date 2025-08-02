@@ -486,3 +486,115 @@ const debouncedScrollHandler = debounce(() => {
 }, 10);
 
 window.addEventListener('scroll', debouncedScrollHandler);
+
+// Custom Cursor Follower
+document.addEventListener('DOMContentLoaded', function() {
+    const cursorFollower = document.getElementById('cursorFollower');
+    const cursorSun = document.querySelector('.cursor-sun');
+    let mouseX = 0;
+    let mouseY = 0;
+    let followerX = 0;
+    let followerY = 0;
+    let isVisible = false;
+
+    // Check if device supports hover (not touch device)
+    const supportsHover = window.matchMedia('(hover: hover)').matches;
+    
+    if (!supportsHover) {
+        return; // Don't enable cursor follower on touch devices
+    }
+
+    // Mouse move handler
+    function handleMouseMove(e) {
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+        
+        if (!isVisible) {
+            cursorFollower.classList.add('active');
+            isVisible = true;
+        }
+    }
+
+    // Mouse leave handler
+    function handleMouseLeave() {
+        cursorFollower.classList.remove('active');
+        cursorFollower.classList.remove('hide-on-hover');
+        isVisible = false;
+    }
+
+    // Smooth animation loop
+    function animateFollower() {
+        // Smooth following with easing
+        const speed = 0.15;
+        followerX += (mouseX - followerX) * speed;
+        followerY += (mouseY - followerY) * speed;
+        
+        cursorFollower.style.left = followerX + 'px';
+        cursorFollower.style.top = followerY + 'px';
+        
+        requestAnimationFrame(animateFollower);
+    }
+
+    // Event listeners
+    document.addEventListener('mousemove', handleMouseMove);
+    document.addEventListener('mouseleave', handleMouseLeave);
+    
+    // Start animation loop
+    animateFollower();
+    
+    // Hide cursor follower when hovering over clickable elements
+    const clickableElements = document.querySelectorAll('a, button, input, textarea, select, [onclick], [role="button"], .btn, .nav-link, .social-link, .project-link, .theme-toggle, .profile-circle');
+    
+    clickableElements.forEach(element => {
+        element.addEventListener('mouseenter', () => {
+            cursorFollower.classList.add('hide-on-hover');
+        });
+        
+        element.addEventListener('mouseleave', () => {
+            cursorFollower.classList.remove('hide-on-hover');
+        });
+    });
+    
+    // Also detect hover on interactive elements that might be added dynamically
+    document.addEventListener('mouseover', (e) => {
+        const target = e.target;
+        const isClickable = target.tagName === 'A' || 
+                          target.tagName === 'BUTTON' || 
+                          target.tagName === 'INPUT' || 
+                          target.tagName === 'TEXTAREA' || 
+                          target.tagName === 'SELECT' ||
+                          target.getAttribute('onclick') ||
+                          target.getAttribute('role') === 'button' ||
+                          target.classList.contains('btn') ||
+                          target.classList.contains('nav-link') ||
+                          target.classList.contains('social-link') ||
+                          target.classList.contains('project-link') ||
+                          target.classList.contains('theme-toggle') ||
+                          target.classList.contains('social-contact-link') ||
+                          target.classList.contains('project-image-link') ||
+                          target.classList.contains('wallet-link') ||
+                          target.classList.contains('copy-btn') ||
+                          target.classList.contains('profile-circle') ||
+                          target.classList.contains('profile-img') ||
+                          target.closest('a') ||
+                          target.closest('button') ||
+                          target.closest('[onclick]') ||
+                          target.closest('[role="button"]') ||
+                          target.closest('.btn') ||
+                          target.closest('.nav-link') ||
+                          target.closest('.social-link') ||
+                          target.closest('.project-link') ||
+                          target.closest('.theme-toggle') ||
+                          target.closest('.social-contact-link') ||
+                          target.closest('.project-image-link') ||
+                          target.closest('.wallet-link') ||
+                          target.closest('.copy-btn') ||
+                          target.closest('.profile-circle');
+        
+        if (isClickable) {
+            cursorFollower.classList.add('hide-on-hover');
+        } else {
+            cursorFollower.classList.remove('hide-on-hover');
+        }
+    });
+});

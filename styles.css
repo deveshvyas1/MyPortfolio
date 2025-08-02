@@ -1487,3 +1487,164 @@ section {
 ::-webkit-scrollbar-thumb:hover {
     background: linear-gradient(135deg, #5a67d8 0%, #6b46c1 100%);
 }
+
+/* Custom Cursor Follower */
+.cursor-follower {
+    position: fixed;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    z-index: 9999;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    transform: translate(-50%, -50%);
+}
+
+.cursor-follower.active {
+    opacity: 1;
+}
+
+/* Hide cursor follower when hovering over clickable elements */
+.cursor-follower.hide-on-hover {
+    opacity: 0;
+    transition: opacity 0.2s ease;
+}
+
+.cursor-sun {
+    width: 20px;
+    height: 20px;
+    background: linear-gradient(135deg, #ffd700 0%, #ff8c00 100%);
+    border-radius: 50%;
+    position: relative;
+    box-shadow: 
+        0 0 20px rgba(255, 215, 0, 0.6),
+        0 0 40px rgba(255, 215, 0, 0.3),
+        0 0 60px rgba(255, 215, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.cursor-sun::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 30px;
+    height: 30px;
+    background: radial-gradient(circle, rgba(255, 215, 0, 0.3) 0%, transparent 70%);
+    border-radius: 50%;
+    animation: sunPulse 2s ease-in-out infinite;
+}
+
+/* Sun rays animation */
+.cursor-sun::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 40px;
+    height: 40px;
+    background: 
+        linear-gradient(0deg, transparent 40%, rgba(255, 215, 0, 0.2) 50%, transparent 60%),
+        linear-gradient(45deg, transparent 40%, rgba(255, 215, 0, 0.2) 50%, transparent 60%),
+        linear-gradient(90deg, transparent 40%, rgba(255, 215, 0, 0.2) 50%, transparent 60%),
+        linear-gradient(135deg, transparent 40%, rgba(255, 215, 0, 0.2) 50%, transparent 60%);
+    border-radius: 50%;
+    animation: sunRotate 4s linear infinite;
+}
+
+/* Dark mode - convert sun to moon */
+[data-theme="dark"] .cursor-sun {
+    background: linear-gradient(135deg, #c7d2fe 0%, #a5b4fc 100%);
+    box-shadow: 
+        0 0 20px rgba(199, 210, 254, 0.6),
+        0 0 40px rgba(199, 210, 254, 0.3),
+        0 0 60px rgba(199, 210, 254, 0.1);
+    position: relative;
+}
+
+/* Moon crater effect */
+[data-theme="dark"] .cursor-sun::before {
+    background: radial-gradient(circle, rgba(165, 180, 252, 0.4) 0%, transparent 70%);
+    animation: moonGlow 3s ease-in-out infinite;
+}
+
+/* Moon phases effect - remove sun rays and add subtle glow */
+[data-theme="dark"] .cursor-sun::after {
+    background: radial-gradient(circle, rgba(199, 210, 254, 0.2) 30%, transparent 70%);
+    animation: moonPhase 6s ease-in-out infinite;
+}
+
+/* Add moon craters */
+[data-theme="dark"] .cursor-sun::before {
+    content: '';
+    position: absolute;
+    top: 30%;
+    left: 40%;
+    width: 4px;
+    height: 4px;
+    background: rgba(165, 180, 252, 0.5);
+    border-radius: 50%;
+    box-shadow: 
+        8px 3px 0 2px rgba(165, 180, 252, 0.3),
+        -2px 8px 0 1px rgba(165, 180, 252, 0.4);
+    animation: moonGlow 3s ease-in-out infinite;
+}
+
+/* Animations */
+@keyframes sunPulse {
+    0%, 100% {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 0.6;
+    }
+    50% {
+        transform: translate(-50%, -50%) scale(1.2);
+        opacity: 0.8;
+    }
+}
+
+@keyframes sunRotate {
+    0% {
+        transform: translate(-50%, -50%) rotate(0deg);
+    }
+    100% {
+        transform: translate(-50%, -50%) rotate(360deg);
+    }
+}
+
+@keyframes moonGlow {
+    0%, 100% {
+        opacity: 0.6;
+        transform: translate(-50%, -50%) scale(1);
+    }
+    50% {
+        opacity: 0.9;
+        transform: translate(-50%, -50%) scale(1.1);
+    }
+}
+
+@keyframes moonPhase {
+    0%, 100% {
+        transform: translate(-50%, -50%) rotate(0deg);
+        opacity: 0.3;
+    }
+    50% {
+        transform: translate(-50%, -50%) rotate(180deg);
+        opacity: 0.6;
+    }
+}
+
+/* Hide cursor follower on mobile devices */
+@media (max-width: 768px) {
+    .cursor-follower {
+        display: none;
+    }
+}
+
+/* Hide cursor follower on mobile devices */
+@media (max-width: 768px) {
+    .cursor-follower {
+        display: none;
+    }
+}
