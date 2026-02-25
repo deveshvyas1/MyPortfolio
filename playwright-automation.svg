@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="700" viewBox="0 0 1200 700" fill="none">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1200" y2="700" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#1E293B"/>
+      <stop offset="1" stop-color="#0F172A"/>
+    </linearGradient>
+    <linearGradient id="panel" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#334155"/>
+      <stop offset="1" stop-color="#1E293B"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="700" rx="24" fill="url(#bg)"/>
+  <rect x="40" y="40" width="1120" height="620" rx="16" fill="#0B1220" stroke="#475569"/>
+
+  <rect x="70" y="80" width="1060" height="54" rx="10" fill="#111827"/>
+  <circle cx="98" cy="107" r="8" fill="#EF4444"/>
+  <circle cx="124" cy="107" r="8" fill="#F59E0B"/>
+  <circle cx="150" cy="107" r="8" fill="#10B981"/>
+  <text x="190" y="113" fill="#94A3B8" font-family="Inter, Arial, sans-serif" font-size="20">Playwright Test Run • TypeScript</text>
+
+  <rect x="70" y="160" width="700" height="470" rx="12" fill="url(#panel)" stroke="#64748B"/>
+  <rect x="800" y="160" width="330" height="470" rx="12" fill="#111827" stroke="#64748B"/>
+
+  <text x="95" y="205" fill="#E2E8F0" font-family="Inter, Arial, sans-serif" font-size="22">$ npx playwright test</text>
+  <text x="95" y="245" fill="#22C55E" font-family="Inter, Arial, sans-serif" font-size="18">✓ login.spec.ts (6 tests)</text>
+  <text x="95" y="277" fill="#22C55E" font-family="Inter, Arial, sans-serif" font-size="18">✓ checkout.spec.ts (8 tests)</text>
+  <text x="95" y="309" fill="#22C55E" font-family="Inter, Arial, sans-serif" font-size="18">✓ profile.spec.ts (5 tests)</text>
+  <text x="95" y="341" fill="#F59E0B" font-family="Inter, Arial, sans-serif" font-size="18">↻ flaky.spec.ts (re-run passed)</text>
+  <text x="95" y="388" fill="#93C5FD" font-family="Inter, Arial, sans-serif" font-size="18">Projects: Chromium • Firefox • WebKit</text>
+  <text x="95" y="420" fill="#93C5FD" font-family="Inter, Arial, sans-serif" font-size="18">Environment: staging</text>
+  <text x="95" y="452" fill="#93C5FD" font-family="Inter, Arial, sans-serif" font-size="18">Reporter: HTML + JUnit</text>
+
+  <rect x="95" y="500" width="650" height="95" rx="10" fill="#0F172A" stroke="#334155"/>
+  <text x="115" y="540" fill="#F8FAFC" font-family="Inter, Arial, sans-serif" font-size="26">19 passed</text>
+  <text x="285" y="540" fill="#94A3B8" font-family="Inter, Arial, sans-serif" font-size="20">•</text>
+  <text x="315" y="540" fill="#F8FAFC" font-family="Inter, Arial, sans-serif" font-size="26">0 failed</text>
+  <text x="470" y="540" fill="#94A3B8" font-family="Inter, Arial, sans-serif" font-size="20">•</text>
+  <text x="500" y="540" fill="#F8FAFC" font-family="Inter, Arial, sans-serif" font-size="26">1 retried</text>
+  <text x="115" y="575" fill="#22C55E" font-family="Inter, Arial, sans-serif" font-size="18">Automation coverage includes smoke + regression flows</text>
+
+  <text x="825" y="210" fill="#E2E8F0" font-family="Inter, Arial, sans-serif" font-size="22">QA Metrics</text>
+  <rect x="825" y="235" width="280" height="1" fill="#334155"/>
+
+  <text x="825" y="285" fill="#22C55E" font-family="Inter, Arial, sans-serif" font-size="42" font-weight="700">120+</text>
+  <text x="825" y="320" fill="#94A3B8" font-family="Inter, Arial, sans-serif" font-size="18">Test Cases Generated</text>
+
+  <text x="825" y="385" fill="#38BDF8" font-family="Inter, Arial, sans-serif" font-size="32" font-weight="700">Playwright</text>
+  <text x="825" y="415" fill="#94A3B8" font-family="Inter, Arial, sans-serif" font-size="18">Automation Framework</text>
+
+  <text x="825" y="485" fill="#A78BFA" font-family="Inter, Arial, sans-serif" font-size="32" font-weight="700">TypeScript</text>
+  <text x="825" y="515" fill="#94A3B8" font-family="Inter, Arial, sans-serif" font-size="18">Maintainable Test Code</text>
+
+  <text x="825" y="585" fill="#F59E0B" font-family="Inter, Arial, sans-serif" font-size="22">Screenshot Example</text>
+</svg>
