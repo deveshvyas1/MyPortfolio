@@ -23,7 +23,7 @@ updateToggleIcon();
 themeToggle.addEventListener('click', () => {
     const currentTheme = html.getAttribute('data-theme');
     const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-    
+
     html.setAttribute('data-theme', newTheme);
     localStorage.setItem('theme', newTheme);
     updateToggleIcon();
@@ -64,7 +64,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 window.addEventListener('scroll', () => {
     let current = '';
     const sections = document.querySelectorAll('section');
-    
+
     sections.forEach(section => {
         const sectionTop = section.offsetTop;
         const sectionHeight = section.clientHeight;
@@ -107,27 +107,27 @@ document.addEventListener('DOMContentLoaded', () => {
 // Contact form handling
 const contactForm = document.getElementById('contactForm');
 
-contactForm.addEventListener('submit', function(e) {
+contactForm.addEventListener('submit', function (e) {
     e.preventDefault();
-    
+
     // Get form data
     const formData = new FormData(contactForm);
     const name = formData.get('name');
     const email = formData.get('email');
     const subject = formData.get('subject');
     const message = formData.get('message');
-    
+
     // Simple validation
     if (!name || !email || !subject || !message) {
         showNotification('Please fill in all fields.', 'error');
         return;
     }
-    
+
     if (!isValidEmail(email)) {
         showNotification('Please enter a valid email address.', 'error');
         return;
     }
-    
+
     // Simulate form submission
     showNotification('Thank you for your message! I\'ll get back to you soon.', 'success');
     contactForm.reset();
@@ -146,7 +146,7 @@ function showNotification(message, type = 'info') {
     if (existingNotification) {
         existingNotification.remove();
     }
-    
+
     // Create notification element
     const notification = document.createElement('div');
     notification.className = `notification ${type}`;
@@ -156,7 +156,7 @@ function showNotification(message, type = 'info') {
             <button class="notification-close">&times;</button>
         </div>
     `;
-    
+
     // Add notification styles
     notification.style.cssText = `
         position: fixed;
@@ -172,20 +172,20 @@ function showNotification(message, type = 'info') {
         transform: translateX(100%);
         transition: transform 0.3s ease;
     `;
-    
+
     // Add to document
     document.body.appendChild(notification);
-    
+
     // Animate in
     setTimeout(() => {
         notification.style.transform = 'translateX(0)';
     }, 100);
-    
+
     // Auto remove after 5 seconds
     setTimeout(() => {
         removeNotification(notification);
     }, 5000);
-    
+
     // Close button functionality
     const closeBtn = notification.querySelector('.notification-close');
     closeBtn.addEventListener('click', () => {
@@ -206,7 +206,7 @@ function removeNotification(notification) {
 function typeWriter(element, text, speed = 100) {
     let i = 0;
     element.innerHTML = '';
-    
+
     function type() {
         if (i < text.length) {
             element.innerHTML += text.charAt(i);
@@ -214,7 +214,7 @@ function typeWriter(element, text, speed = 100) {
             setTimeout(type, speed);
         }
     }
-    
+
     type();
 }
 
@@ -232,13 +232,13 @@ document.addEventListener('DOMContentLoaded', () => {
 // Skill items hover effect
 document.addEventListener('DOMContentLoaded', () => {
     const skillItems = document.querySelectorAll('.skill-item');
-    
+
     skillItems.forEach(item => {
-        item.addEventListener('mouseenter', function() {
+        item.addEventListener('mouseenter', function () {
             this.style.transform = 'translateY(-10px) scale(1.05)';
         });
-        
-        item.addEventListener('mouseleave', function() {
+
+        item.addEventListener('mouseleave', function () {
             this.style.transform = 'translateY(0) scale(1)';
         });
     });
@@ -247,23 +247,23 @@ document.addEventListener('DOMContentLoaded', () => {
 // Project card tilt effect
 document.addEventListener('DOMContentLoaded', () => {
     const projectCards = document.querySelectorAll('.project-card');
-    
+
     projectCards.forEach(card => {
-        card.addEventListener('mousemove', function(e) {
+        card.addEventListener('mousemove', function (e) {
             const rect = this.getBoundingClientRect();
             const x = e.clientX - rect.left;
             const y = e.clientY - rect.top;
-            
+
             const centerX = rect.width / 2;
             const centerY = rect.height / 2;
-            
+
             const rotateX = (y - centerY) / 20;
             const rotateY = (centerX - x) / 20;
-            
+
             this.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-10px)`;
         });
-        
-        card.addEventListener('mouseleave', function() {
+
+        card.addEventListener('mouseleave', function () {
             this.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateY(0)';
         });
     });
@@ -274,7 +274,7 @@ window.addEventListener('scroll', () => {
     const scrolled = window.pageYOffset;
     const hero = document.querySelector('.hero');
     const heroContent = document.querySelector('.hero-content');
-    
+
     if (hero && heroContent) {
         const rate = scrolled * -0.5;
         heroContent.style.transform = `translateY(${rate}px)`;
@@ -297,7 +297,7 @@ window.addEventListener('scroll', () => {
 function animateCounter(element, target, duration = 2000) {
     let start = 0;
     const increment = target / (duration / 16);
-    
+
     function updateCounter() {
         start += increment;
         if (start < target) {
@@ -307,7 +307,7 @@ function animateCounter(element, target, duration = 2000) {
             element.textContent = target;
         }
     }
-    
+
     updateCounter();
 }
 
@@ -347,16 +347,16 @@ function initDarkMode() {
         transition: all 0.3s ease;
         display: none; /* Hidden by default, can be enabled */
     `;
-    
+
     document.body.appendChild(darkModeToggle);
-    
+
     darkModeToggle.addEventListener('click', () => {
         document.body.classList.toggle('dark-mode');
         const isDark = document.body.classList.contains('dark-mode');
         darkModeToggle.innerHTML = isDark ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
         localStorage.setItem('darkMode', isDark);
     });
-    
+
     // Check for saved dark mode preference
     const savedDarkMode = localStorage.getItem('darkMode');
     if (savedDarkMode === 'true') {
@@ -367,9 +367,9 @@ function initDarkMode() {
 
 // Copy wallet address to clipboard
 function copyToClipboard(text) {
-    navigator.clipboard.writeText(text).then(function() {
+    navigator.clipboard.writeText(text).then(function () {
         showNotification('Wallet address copied to clipboard!', 'success');
-    }).catch(function(err) {
+    }).catch(function (err) {
         // Fallback for older browsers
         const textArea = document.createElement('textarea');
         textArea.value = text;
@@ -389,7 +389,7 @@ function copyToClipboard(text) {
 // Web3 stats counter animation
 function animateWeb3Counters() {
     const counters = document.querySelectorAll('.stat-info h4');
-    
+
     counters.forEach(counter => {
         const text = counter.textContent;
         if (text.includes('1443')) {
@@ -405,7 +405,7 @@ function animateCounter(element, target, duration = 2000, suffix = '', isLarge =
     let start = 0;
     const increment = target / (duration / 16);
     const originalText = element.textContent;
-    
+
     function updateCounter() {
         start += increment;
         if (start < target) {
@@ -424,7 +424,7 @@ function animateCounter(element, target, duration = 2000, suffix = '', isLarge =
             }
         }
     }
-    
+
     updateCounter();
 }
 
@@ -449,21 +449,26 @@ document.addEventListener('DOMContentLoaded', () => {
 document.addEventListener('DOMContentLoaded', () => {
     // Add loading animation
     document.body.classList.add('loaded');
-    
+
     // Initialize features
     // initDarkMode(); // Uncomment if you want dark mode
-    
-    // Add smooth reveal animation to sections
+
+    // Add smooth reveal animation to sections using IntersectionObserver
+    const sectionObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.opacity = '1';
+                entry.target.style.transform = 'translateY(0)';
+            }
+        });
+    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
     const sections = document.querySelectorAll('section');
-    sections.forEach((section, index) => {
+    sections.forEach((section) => {
         section.style.opacity = '0';
         section.style.transform = 'translateY(50px)';
-        section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-        
-        setTimeout(() => {
-            section.style.opacity = '1';
-            section.style.transform = 'translateY(0)';
-        }, index * 200);
+        section.style.transition = 'opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), transform 0.8s cubic-bezier(0.4, 0, 0.2, 1)';
+        sectionObserver.observe(section);
     });
 });
 
@@ -488,7 +493,7 @@ const debouncedScrollHandler = debounce(() => {
 window.addEventListener('scroll', debouncedScrollHandler);
 
 // Custom Cursor Follower
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     const cursorFollower = document.getElementById('cursorFollower');
     const cursorSun = document.querySelector('.cursor-sun');
     let mouseX = 0;
@@ -499,7 +504,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Check if device supports hover (not touch device)
     const supportsHover = window.matchMedia('(hover: hover)').matches;
-    
+
     if (!supportsHover) {
         return; // Don't enable cursor follower on touch devices
     }
@@ -508,7 +513,7 @@ document.addEventListener('DOMContentLoaded', function() {
     function handleMouseMove(e) {
         mouseX = e.clientX;
         mouseY = e.clientY;
-        
+
         if (!isVisible) {
             cursorFollower.classList.add('active');
             isVisible = true;
@@ -528,73 +533,188 @@ document.addEventListener('DOMContentLoaded', function() {
         const speed = 0.15;
         followerX += (mouseX - followerX) * speed;
         followerY += (mouseY - followerY) * speed;
-        
+
         cursorFollower.style.left = followerX + 'px';
         cursorFollower.style.top = followerY + 'px';
-        
+
         requestAnimationFrame(animateFollower);
     }
 
     // Event listeners
     document.addEventListener('mousemove', handleMouseMove);
     document.addEventListener('mouseleave', handleMouseLeave);
-    
+
     // Start animation loop
     animateFollower();
-    
+
     // Hide cursor follower when hovering over clickable elements
     const clickableElements = document.querySelectorAll('a, button, input, textarea, select, [onclick], [role="button"], .btn, .nav-link, .social-link, .project-link, .theme-toggle, .profile-circle');
-    
+
     clickableElements.forEach(element => {
         element.addEventListener('mouseenter', () => {
             cursorFollower.classList.add('hide-on-hover');
         });
-        
+
         element.addEventListener('mouseleave', () => {
             cursorFollower.classList.remove('hide-on-hover');
         });
     });
-    
+
     // Also detect hover on interactive elements that might be added dynamically
     document.addEventListener('mouseover', (e) => {
         const target = e.target;
-        const isClickable = target.tagName === 'A' || 
-                          target.tagName === 'BUTTON' || 
-                          target.tagName === 'INPUT' || 
-                          target.tagName === 'TEXTAREA' || 
-                          target.tagName === 'SELECT' ||
-                          target.getAttribute('onclick') ||
-                          target.getAttribute('role') === 'button' ||
-                          target.classList.contains('btn') ||
-                          target.classList.contains('nav-link') ||
-                          target.classList.contains('social-link') ||
-                          target.classList.contains('project-link') ||
-                          target.classList.contains('theme-toggle') ||
-                          target.classList.contains('social-contact-link') ||
-                          target.classList.contains('project-image-link') ||
-                          target.classList.contains('wallet-link') ||
-                          target.classList.contains('copy-btn') ||
-                          target.classList.contains('profile-circle') ||
-                          target.classList.contains('profile-img') ||
-                          target.closest('a') ||
-                          target.closest('button') ||
-                          target.closest('[onclick]') ||
-                          target.closest('[role="button"]') ||
-                          target.closest('.btn') ||
-                          target.closest('.nav-link') ||
-                          target.closest('.social-link') ||
-                          target.closest('.project-link') ||
-                          target.closest('.theme-toggle') ||
-                          target.closest('.social-contact-link') ||
-                          target.closest('.project-image-link') ||
-                          target.closest('.wallet-link') ||
-                          target.closest('.copy-btn') ||
-                          target.closest('.profile-circle');
-        
+        const isClickable = target.tagName === 'A' ||
+            target.tagName === 'BUTTON' ||
+            target.tagName === 'INPUT' ||
+            target.tagName === 'TEXTAREA' ||
+            target.tagName === 'SELECT' ||
+            target.getAttribute('onclick') ||
+            target.getAttribute('role') === 'button' ||
+            target.classList.contains('btn') ||
+            target.classList.contains('nav-link') ||
+            target.classList.contains('social-link') ||
+            target.classList.contains('project-link') ||
+            target.classList.contains('theme-toggle') ||
+            target.classList.contains('social-contact-link') ||
+            target.classList.contains('project-image-link') ||
+            target.classList.contains('wallet-link') ||
+            target.classList.contains('copy-btn') ||
+            target.classList.contains('profile-circle') ||
+            target.classList.contains('profile-img') ||
+            target.closest('a') ||
+            target.closest('button') ||
+            target.closest('[onclick]') ||
+            target.closest('[role="button"]') ||
+            target.closest('.btn') ||
+            target.closest('.nav-link') ||
+            target.closest('.social-link') ||
+            target.closest('.project-link') ||
+            target.closest('.theme-toggle') ||
+            target.closest('.social-contact-link') ||
+            target.closest('.project-image-link') ||
+            target.closest('.wallet-link') ||
+            target.closest('.copy-btn') ||
+            target.closest('.profile-circle');
+
         if (isClickable) {
             cursorFollower.classList.add('hide-on-hover');
         } else {
             cursorFollower.classList.remove('hide-on-hover');
         }
     });
+});
+
+// Live Background Particles
+class ParticleNetwork {
+    constructor() {
+        this.canvas = document.getElementById('bg-canvas');
+        this.ctx = this.canvas.getContext('2d');
+        this.particles = [];
+        this.mouse = { x: null, y: null };
+        this.connectionDistance = 150;
+        this.particleCount = window.innerWidth < 768 ? 15 : 100;
+
+        this.init();
+        this.animate();
+
+        window.addEventListener('resize', () => {
+            this.setCanvasSize();
+            this.particleCount = window.innerWidth < 768 ? 15 : 100;
+            this.createParticles();
+        });
+
+        window.addEventListener('mousemove', (e) => {
+            this.mouse.x = e.x;
+            this.mouse.y = e.y;
+        });
+
+        window.addEventListener('mouseout', () => {
+            this.mouse.x = null;
+            this.mouse.y = null;
+        });
+    }
+
+    setCanvasSize() {
+        this.canvas.width = window.innerWidth;
+        this.canvas.height = window.innerHeight;
+    }
+
+    createParticles() {
+        this.particles = [];
+        for (let i = 0; i < this.particleCount; i++) {
+            this.particles.push({
+                x: Math.random() * this.canvas.width,
+                y: Math.random() * this.canvas.height,
+                vx: (Math.random() - 0.5) * 1.5,
+                vy: (Math.random() - 0.5) * 1.5,
+                radius: Math.random() * 2 + 1
+            });
+        }
+    }
+
+    drawLines() {
+        for (let i = 0; i < this.particles.length; i++) {
+            for (let j = i + 1; j < this.particles.length; j++) {
+                const dx = this.particles[i].x - this.particles[j].x;
+                const dy = this.particles[i].y - this.particles[j].y;
+                const distance = Math.sqrt(dx * dx + dy * dy);
+
+                if (distance < this.connectionDistance) {
+                    const alpha = 1 - distance / this.connectionDistance;
+                    const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+                    this.ctx.beginPath();
+                    this.ctx.strokeStyle = isDark ? `rgba(148, 163, 184, ${alpha * 0.3})` : `rgba(59, 130, 246, ${alpha * 0.3})`;
+                    this.ctx.lineWidth = 1;
+                    this.ctx.moveTo(this.particles[i].x, this.particles[i].y);
+                    this.ctx.lineTo(this.particles[j].x, this.particles[j].y);
+                    this.ctx.stroke();
+                }
+            }
+        }
+    }
+
+    animate() {
+        this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+
+        const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+        this.ctx.fillStyle = isDark ? 'rgba(255, 255, 255, 0.5)' : 'rgba(59, 130, 246, 0.5)';
+
+        this.particles.forEach(p => {
+            p.x += p.vx;
+            p.y += p.vy;
+
+            // Bounce off walls
+            if (p.x < 0 || p.x > this.canvas.width) p.vx *= -1;
+            if (p.y < 0 || p.y > this.canvas.height) p.vy *= -1;
+
+            // Interaction with mouse
+            if (this.mouse.x !== null) {
+                const dx = this.mouse.x - p.x;
+                const dy = this.mouse.y - p.y;
+                const distance = Math.sqrt(dx * dx + dy * dy);
+                if (distance < 100) {
+                    p.x -= dx * 0.05;
+                    p.y -= dy * 0.05;
+                }
+            }
+
+            this.ctx.beginPath();
+            this.ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+            this.ctx.fill();
+        });
+
+        this.drawLines();
+        requestAnimationFrame(() => this.animate());
+    }
+
+    init() {
+        this.setCanvasSize();
+        this.createParticles();
+    }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    setTimeout(() => {
+        new ParticleNetwork();
+    }, 500); // Defer canvas particles for smooth page load
 });
