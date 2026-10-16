@@ -473,19 +473,21 @@ a { color: var(--accent); text-decoration: none; }
 
 .profile-circle {
     position: relative;
-    width: 280px; height: 280px;
+    width: 300px;
+    aspect-ratio: 4 / 5;
     border-radius: var(--radius);
     padding: 10px;
     background: var(--panel);
     border: 1px solid var(--green);
     box-shadow: var(--glow-green);
-    display: grid; place-items: center;
+    box-sizing: border-box;
 }
 
 .profile-circle::before {
     content: "./profile.jpg";
     position: absolute;
     top: -11px; left: 14px;
+    z-index: 2;
     background: var(--bg);
     padding: 0 8px;
     font-size: 0.72rem;
@@ -493,9 +495,12 @@ a { color: var(--accent); text-decoration: none; }
 }
 
 .profile-img {
-    width: 100%; height: 100%;
+    display: block;
+    width: 100%;
+    height: 100%;
     border-radius: var(--radius-sm);
     object-fit: cover;
+    object-position: center top;
     filter: saturate(1.05);
 }
 
@@ -829,7 +834,7 @@ section { padding: 5.5rem 0; position: relative; }
 @media (max-width: 992px) {
     .hero-content { grid-template-columns: 1fr; gap: 2rem; }
     .hero-image { order: -1; }
-    .profile-circle { width: 220px; height: 220px; }
+    .profile-circle { width: 240px; }
     .about-content { grid-template-columns: 1fr; }
     .about-card { position: static; }
     .resume-content, .contact-content { grid-template-columns: 1fr; }
