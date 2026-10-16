@@ -878,3 +878,224 @@ section { padding: 5.5rem 0; position: relative; }
     .reveal { opacity: 1; transform: none; }
     .section-title::after, .cursor-sun { animation: none; }
 }
+
+/* ============================================================
+   NEW v5.0 — Scroll progress (terminal loading bar)
+   ============================================================ */
+.scroll-progress {
+    position: fixed;
+    top: 0; left: 0;
+    height: 3px;
+    width: 0%;
+    z-index: 2000;
+    background: linear-gradient(90deg, var(--green), var(--cyan) 60%, var(--amber));
+    box-shadow: 0 0 10px rgba(63, 185, 80, 0.6);
+    transition: width 0.08s linear;
+}
+
+/* ============================================================
+   NEW v5.0 — Stats strip (animated counters)
+   ============================================================ */
+.stats-strip { padding: 1rem 0 4.5rem; }
+
+.stats-terminal {
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    overflow: hidden;
+}
+
+.stats-terminal-head {
+    padding: 0.65rem 1.1rem;
+    background: var(--chrome);
+    border-bottom: 1px solid var(--line);
+    color: var(--text-faint);
+    font-size: 0.76rem;
+    letter-spacing: 0.4px;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background: var(--line);
+}
+
+.stat-metric {
+    background: var(--panel);
+    padding: 1.4rem 1.3rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.stat-key {
+    font-size: 0.78rem;
+    color: var(--cyan);
+}
+.stat-key::before { content: "> "; color: var(--text-faint); }
+
+.stat-value {
+    font-size: clamp(1.8rem, 4vw, 2.6rem);
+    font-weight: 800;
+    color: var(--green-bright);
+    line-height: 1;
+    font-variant-numeric: tabular-nums;
+}
+
+.stat-note {
+    font-size: 0.72rem;
+    color: var(--text-faint);
+}
+
+/* ============================================================
+   NEW v5.0 — Project test-run output bar
+   ============================================================ */
+.test-run {
+    margin-top: 0.9rem;
+    padding-top: 0.8rem;
+    border-top: 1px dashed var(--line);
+    font-size: 0.74rem;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.4rem;
+    opacity: 0.65;
+    transition: opacity 0.25s var(--ease);
+}
+.project-card:hover .test-run { opacity: 1; }
+
+.tr-pass {
+    color: var(--green-bright);
+    font-weight: 700;
+    white-space: nowrap;
+}
+.tr-meta { color: var(--text-faint); }
+
+/* ============================================================
+   NEW v5.0 — Hero boot caret (typed lines)
+   ============================================================ */
+.boot-caret::after {
+    content: "▋";
+    color: var(--green-bright);
+    animation: blink 1s steps(1) infinite;
+    margin-left: 1px;
+}
+
+/* ============================================================
+   NEW v5.0 — Interactive mini-terminal
+   ============================================================ */
+.term-launch {
+    position: fixed;
+    bottom: 22px; right: 22px;
+    z-index: 1500;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.55rem;
+    padding: 0.7rem 1.1rem;
+    border-radius: 999px;
+    background: var(--panel);
+    border: 1px solid var(--green);
+    color: var(--green-bright);
+    font-family: var(--mono);
+    font-size: 0.82rem;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: var(--glow-green), 0 10px 30px rgba(0,0,0,0.45);
+    transition: all 0.25s var(--ease);
+}
+.term-launch:hover { transform: translateY(-3px); background: rgba(63,185,80,0.14); }
+.term-launch i { font-size: 0.9rem; }
+
+.term-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 3000;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    background: rgba(0,0,0,0.55);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+}
+.term-overlay.open { display: flex; }
+
+.term-window {
+    width: min(640px, 100%);
+    max-height: 72vh;
+    display: flex;
+    flex-direction: column;
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    box-shadow: 0 24px 70px rgba(0,0,0,0.6);
+    overflow: hidden;
+    animation: termPop 0.22s var(--ease);
+}
+@keyframes termPop { from { transform: translateY(14px) scale(0.98); opacity: 0; } to { transform: none; opacity: 1; } }
+
+.term-head {
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+    padding: 0.65rem 1rem;
+    background: var(--chrome);
+    border-bottom: 1px solid var(--line);
+}
+.term-dots { display: inline-flex; gap: 6px; }
+.term-dots i { width: 11px; height: 11px; border-radius: 50%; display: inline-block; }
+.term-dots i:nth-child(1) { background: #f85149; }
+.term-dots i:nth-child(2) { background: #e3b341; }
+.term-dots i:nth-child(3) { background: #3fb950; }
+.term-title { flex: 1; font-size: 0.78rem; color: var(--text-faint); }
+.term-close {
+    background: none; border: none; color: var(--text-dim);
+    font-size: 1.3rem; line-height: 1; cursor: pointer; padding: 0 4px;
+}
+.term-close:hover { color: var(--red); }
+
+.term-body {
+    flex: 1;
+    overflow-y: auto;
+    padding: 1rem 1.1rem;
+    font-size: 0.84rem;
+    line-height: 1.6;
+}
+.term-line { white-space: pre-wrap; word-break: break-word; margin-bottom: 0.15rem; }
+.term-sys { color: var(--text-dim); }
+.term-sys b { color: var(--green-bright); }
+.term-cmd { color: var(--text); }
+.term-cmd .tp { color: var(--green-bright); }
+.term-out { color: var(--text-dim); }
+.term-out a { color: var(--cyan); }
+.term-out .ok { color: var(--green-bright); }
+.term-out .warn { color: var(--amber); }
+.term-err { color: var(--red); }
+
+.term-input-row {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.7rem 1.1rem;
+    border-top: 1px solid var(--line);
+    background: var(--bg-2);
+}
+.term-prompt { color: var(--green-bright); font-size: 0.82rem; white-space: nowrap; }
+.term-input {
+    flex: 1;
+    background: none;
+    border: none;
+    outline: none;
+    color: var(--text);
+    font-family: var(--mono);
+    font-size: 0.84rem;
+}
+
+@media (max-width: 480px) {
+    .stats-grid { grid-template-columns: 1fr 1fr; }
+    .term-launch span { display: none; }
+    .term-launch { padding: 0.75rem; }
+    .term-launch i { font-size: 1.05rem; }
+}
